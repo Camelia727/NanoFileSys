@@ -24,6 +24,9 @@ public class TouchCommand implements Command {
         } catch (NumberFormatException e) {
             return;
         }
+        if (size < 0) {
+            size = 0;
+        }
         List<String> segments = PathUtil.segments(path);
         if (segments.isEmpty()) {
             return;
