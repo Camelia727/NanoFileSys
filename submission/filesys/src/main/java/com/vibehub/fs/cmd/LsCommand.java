@@ -11,6 +11,9 @@ public class LsCommand implements Command {
             return;
         }
         String path = args[0];
+        if (!path.startsWith("/")) {
+            return;
+        }
         Node node = fs.resolve(path);
         if (node == null) {
             return;

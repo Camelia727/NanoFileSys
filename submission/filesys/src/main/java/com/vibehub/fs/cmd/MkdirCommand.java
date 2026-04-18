@@ -14,6 +14,9 @@ public class MkdirCommand implements Command {
             return;
         }
         String path = args[0];
+        if (!path.startsWith("/")) {
+            return;
+        }
         List<String> segments = PathUtil.segments(path);
         if (segments.isEmpty()) {
             return;

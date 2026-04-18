@@ -15,7 +15,15 @@ public class TouchCommand implements Command {
             return;
         }
         String path = args[0];
-        long size = Long.parseLong(args[1]);
+        if (!path.startsWith("/")) {
+            return;
+        }
+        long size;
+        try {
+            size = Long.parseLong(args[1]);
+        } catch (NumberFormatException e) {
+            return;
+        }
         List<String> segments = PathUtil.segments(path);
         if (segments.isEmpty()) {
             return;
